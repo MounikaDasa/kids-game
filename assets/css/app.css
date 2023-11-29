@@ -88,7 +88,7 @@ main {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 768px min-width: 400px) {
     #door1Block,
 #door2Block
 {
