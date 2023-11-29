@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhunis Game</title>
+
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    
+    <script src="./src/index.js" type="module"></script>
+
+    <style>
+        .game-content {
+            display: flex;
+            justify-content: space-between; /* Add space between the doors */
+        }
+
+        .block {
+            position: relative;
+        }
+
+        #door1,
+        #door2,
+        .laugh-gif,
+        #play {
+            width: 12rem; /* Adjust the width of the images and button */
+            height: auto;
+        }
+
+        #door2, #door1 {
+            position: absolute;
+            width: 12rem; /* Set the width of the doors */
+            z-index: 1; /* Ensure doors are behind the button */
+            margin-left: 5rem;
+        }
+
+        #play {
+            position: absolute; /* Set the button to absolute position */
+            top: 40rem; /* Adjust the top distance as needed */
+            z-index: 2; /* Ensure button is above the doors */
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Press the play button to start</h1>
+        </header>
+        <main class="wrapper flex-center">
+            <section class="game-wrapper flex-center flex-dir-col">
+            
+                <div class="game-content flex-center">
+                    <div class="block flex-center">
+                        <img id="door1Block" style="width: 6rem; height:auto; position: absolute; " src="" alt="">
+                        <img id="door1" style="width: 14rem; height:auto; position: absolute;" data-door-number="1" src="./assets/images/closedoor.png" alt="">
+                    </div>
+                    <div class="game-statistics" style="margin-left: 10rem;margin-right: 6rem;">
+                        <img class="" id="arrow" src="" />
+                    </div>
+                    <div class="block flex-center" > <!-- Adjusted margin-left to create space -->
+                        <img  id="door2Block" style="width: 6rem; height:auto; position: absolute; " src="" alt="">
+                        <img id="door2" style="width: 14rem; height:auto; position: absolute;" data-door-number="2" src="./assets/images/closedoor.png" alt="">
+                    </div>
+                </div>
+              
+               
+                <div class="game-statistics">
+                    <button class="mh-btn" id="play">Play</button>
+                </div>
+                
+            </section>
+        </main>
+       
+    </div>
+</body>
+</html>
