@@ -59,8 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         // Change the door image to the open door image
         clickedDoor.src = './assets/images/opendoor.png';
-          // Set the width of the door to 20rem while opening
-        clickedDoor.style.width = '19rem';
+         
         
         // Play the door sound
         doorSound.play();
@@ -83,8 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Change the door image back to the closed door image
             clickedDoor.src = './assets/images/closedoor.png';
             
-            // Reset the width of the door
-            clickedDoor.style.width = '14rem';
+            
 
             // Remove both elements
         }, 500);
