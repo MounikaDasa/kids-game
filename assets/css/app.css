@@ -99,6 +99,9 @@ main {
 h1 {
     font-size: 1.5rem; /* Adjusted font size for smaller screens */
 }
+#app {
+    background-size: 100% 100%; /* Adjusted background size for smaller screens */
+}
 
 #door2, #door1 {
     position: absolute;
@@ -132,3 +135,52 @@ h1 {
 }
 
 /* Add more media queries as needed for different screen sizes */
+/* Responsive Styles */
+@media (max-width: 400px) {
+    #door1Block,
+#door2Block
+{
+    width: 2.5rem; /* Adjust the width of the images and button */
+    height: auto;
+    position: absolute;
+}
+h1 {
+    font-size: 1.5rem; /* Adjusted font size for smaller screens */
+}
+#app {
+    background-size: 100% 100%; /* Adjusted background size for smaller screens */
+}
+
+#door2, #door1 {
+    position: absolute;
+    width: 6.5rem; /* Set the width of the doors */
+    z-index: 1; /* Ensure doors are behind the button */
+    margin-left: 1.5rem;
+}
+
+#play {
+    position: absolute; /* Set the button to absolute position */
+    top: 3rem; /* Adjust the top distance as needed */
+    z-index: 2; /* Ensure button is above the doors */
+}
+#arrow {
+
+    margin-left: 2rem;
+    margin-right: 1rem;
+    width: 3rem
+}
+
+.mh-btn {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 179, 0, 0.842);
+    font-size: 8px;
+    font-weight: bold;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 4px solid black;
+}
+
+}
+
+/* Add more media queries as needed for different screen sizes */
+
