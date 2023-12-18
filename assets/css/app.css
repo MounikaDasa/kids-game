@@ -88,7 +88,7 @@ main {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 768px min-width: 400px) {
     #door1Block,
 #door2Block
 {
@@ -140,7 +140,7 @@ h1 {
     #door1Block,
 #door2Block
 {
-    width: 2.5rem; /* Adjust the width of the images and button */
+    width: 2rem; /* Adjust the width of the images and button */
     height: auto;
     position: absolute;
 }
@@ -153,7 +153,7 @@ h1 {
 
 #door2, #door1 {
     position: absolute;
-    width: 6.5rem; /* Set the width of the doors */
+    width: 6rem; /* Set the width of the doors */
     z-index: 1; /* Ensure doors are behind the button */
     margin-left: 1.5rem;
 }
