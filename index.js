@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             const reactionTime = new Date().getTime() - trialStartTime;
             // console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : ~(tempArray[blockTrails])) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
-            experimentRecords.push({ RandomNumber: doorNumber == 1 ? tempArray[blockTrails] : ~(tempArray[blockTrails]), DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
+            experimentRecords.push({ RandomNumber: randomNumber, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
             setTimeout(() => {
                 event.target.src = './assets/images/closedoor.png';
             }, 800);
