@@ -9,9 +9,8 @@ html, body {
 }
 
 #app {
-    background: url('../images/background.jpg');
-    background-size: cover;
-  
+    background: url(../images/background.png);
+    background-size: cover; /* This will make the background image cover the entire container */
     height: 100vh;
 }
 
@@ -42,31 +41,24 @@ main {
 }
 
 
-#door1Block,
-#door2Block
-{
-    width: 5rem; /* Adjust the width of the images and button */
-    height: auto;
-    position: absolute;
-}
-
 #door2, #door1 {
     position: absolute;
-    width: 12rem; /* Set the width of the doors */
+    width: 22rem; /* Set the width of the doors */
     z-index: 1; /* Ensure doors are behind the button */
-    margin-left: 5rem;
+    margin: 8rem;
+    
 }
 
 #play {
     position: absolute; /* Set the button to absolute position */
-    top: 1rem; /* Adjust the top distance as needed */
+    top: 35rem; /* Adjust the top distance as needed */
     z-index: 2; /* Ensure button is above the doors */
 }
-#arrow {
 
-    margin-left: 10rem;
-    margin-right: 6rem;
-    width: 10rem
+#arrow {
+    margin-left: 12rem;
+    margin-right: 12rem;
+    width: 10rem;
 }
 
 .mh-btn {
@@ -88,99 +80,118 @@ main {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px min-width: 400px) {
-    #door1Block,
-#door2Block
-{
-    width: 3rem; /* Adjust the width of the images and button */
-    height: auto;
-    position: absolute;
-}
-h1 {
-    font-size: 1.5rem; /* Adjusted font size for smaller screens */
-}
-#app {
-    background-size: 100% 100%; /* Adjusted background size for smaller screens */
+@media (max-width: 768px) and (min-width: 400px) {
+
+    h1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+    #app {
+        background-size: 100% 100%; /* Adjusted background size for smaller screens */
+    }
+
+    #door2, #door1 {
+        position: absolute;
+        width: 15rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin: 6rem;
+    }
+
+    #play {
+        position: absolute; /* Set the button to absolute position */
+        top: 30rem; /* Adjust the top distance as needed */
+        z-index: 2; /* Ensure button is above the doors */
+    }
+    #arrow {
+        margin-left:5rem;
+        margin-right:5rem;
+        width: 7rem;
+    }
+
+    .mh-btn {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 179, 0, 0.842);
+        font-size: 8px;
+        font-weight: bold;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 4px solid black;
+    }
 }
 
-#door2, #door1 {
-    position: absolute;
-    width: 8rem; /* Set the width of the doors */
-    z-index: 1; /* Ensure doors are behind the button */
-    margin-left: 2rem;
-}
-
-#play {
-    position: absolute; /* Set the button to absolute position */
-    top: 3rem; /* Adjust the top distance as needed */
-    z-index: 2; /* Ensure button is above the doors */
-}
-#arrow {
-
-    margin-left: 3rem;
-    margin-right: 1.5rem;
-    width: 4rem
-}
-
-.mh-btn {
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: rgba(255, 179, 0, 0.842);
-    font-size: 8px;
-    font-weight: bold;
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 4px solid black;
-}
-
-}
-
-/* Add more media queries as needed for different screen sizes */
 /* Responsive Styles */
 @media (max-width: 400px) {
-    #door1Block,
-#door2Block
-{
-    width: 2rem; /* Adjust the width of the images and button */
-    height: auto;
-    position: absolute;
-}
-h1 {
-    font-size: 1.5rem; /* Adjusted font size for smaller screens */
-}
-#app {
-    background-size: 100% 100%; /* Adjusted background size for smaller screens */
+  
+    h1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+    #app {
+        background-size: 100% 100%; /* Adjusted background size for smaller screens */
+    }
+
+    #door2, #door1 {
+        position: absolute;
+        width: 9rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin: 1.5rem;
+    }
+
+    #play {
+        position: absolute; /* Set the button to absolute position */
+        top: 28rem; /* Adjust the top distance as needed */
+        z-index: 2; /* Ensure button is above the doors */
+    }
+    #arrow {
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .mh-btn {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 179, 0, 0.842);
+        font-size: 8px;
+        font-weight: bold;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 4px solid black;
+    }
 }
 
-#door2, #door1 {
-    position: absolute;
-    width: 6rem; /* Set the width of the doors */
-    z-index: 1; /* Ensure doors are behind the button */
-    margin-left: 1.5rem;
+/* Responsive Styles */
+@media (max-width: 300px) {
+  
+    h1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+    #app {
+        background-size: 100% 100%; /* Adjusted background size for smaller screens */
+    }
+
+    #door2, #door1 {
+        position: absolute;
+        width: 6rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin: 1rem;
+    }
+
+    #play {
+        position: absolute; /* Set the button to absolute position */
+        top: 25rem; /* Adjust the top distance as needed */
+        z-index: 2; /* Ensure button is above the doors */
+    }
+    #arrow {
+        margin-left: 1.2rem;
+        margin-right: 1.2rem;
+        width: 1.5rem;
+    }
+
+    .mh-btn {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        background-color: rgba(255, 179, 0, 0.842);
+        font-size: 8px;
+        font-weight: bold;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 4px solid black;
+    }
 }
-
-#play {
-    position: absolute; /* Set the button to absolute position */
-    top: 3rem; /* Adjust the top distance as needed */
-    z-index: 2; /* Ensure button is above the doors */
-}
-#arrow {
-
-    margin-left: 2rem;
-    margin-right: 1rem;
-    width: 3rem
-}
-
-.mh-btn {
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    background-color: rgba(255, 179, 0, 0.842);
-    font-size: 8px;
-    font-weight: bold;
-    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 4px solid black;
-}
-
-}
-
-/* Add more media queries as needed for different screen sizes */
-

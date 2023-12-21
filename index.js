@@ -13,11 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const door2Block = document.getElementById('door2Block');
     const playButton = document.getElementById('play');
     const doorSound = new Audio('./assets/click.mp3');
+    const yay = new Audio('./assets/yey.mp3');
+    
     const arrow = document.getElementById('arrow');
-    let remainingTrials = -1;
+    let remainingTrials = 0;
     let trialStartTime;
     let blockTrails = 0;
     let cue = 0;
+    let gifts=['A','A1','A3','A4','B','B1','B2','B3','B4','B5','B6','C','C1','C2','C3','C4','D','D2','D3','D4','E','E1','E2','E3','E4']
 
     let randomArray = [];
 
@@ -54,54 +57,85 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function handleDoorClick(event) {
         if (remainingTrials < randomArray.length) {
-            remainingTrials++;
-            const randomNumber = randomArray[remainingTrials] === 1 ? 1 : 0;
-            const doorNumber = event.target.getAttribute('data-door-number');
-            // console.log('Door ' + doorNumber + ' clicked!');
-            event.target.src = './assets/images/opendoor.png';
-            doorSound.play();
-            const randomImageSrc = randomNumber === 0 ? './assets/images/laughing.gif' : './assets/images/gift.gif';
-            if (doorNumber === '1') {
-                door1Block.src = randomImageSrc;
-            } else {
-                door2Block.src = randomImageSrc;
-            }
+            
             const reactionTime = new Date().getTime() - trialStartTime;
-            // console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : ~(tempArray[blockTrails])) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
-            experimentRecords.push({ RandomNumber: randomNumber, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
+            const doorNumber = event.target.getAttribute('data-door-number');
+            console.log('Door ' + doorNumber + ' clicked!');
+            event.target.src = './assets/images/GFN.gif';
+            doorSound.play();
+           
+           
+            console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
+            experimentRecords.push({ RandomNumber: randomArray[remainingTrials], DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
+           
+            if(randomArray[remainingTrials]===1){
+                
             setTimeout(() => {
-                event.target.src = './assets/images/closedoor.png';
-            }, 800);
+                let randomGift = gifts[Math.floor(Math.random() * gifts.length)];           
+               event.target.src = './assets/images/' + randomGift + '.gif';
+               yay.play();
+                // This line will execute after the timeout
+                setTimeout(() => {
+                    event.target.src = './assets/images/GF.jpg';
+                    door1.addEventListener('click', handleDoorClick);
+                    door2.addEventListener('click', handleDoorClick);
+                    trialStartTime = new Date().getTime();
+                }, 800);
+            }, 1200); }
+            else{
+                setTimeout(() => {
+                    event.target.src = './assets/images/GF.jpg';
+                    door1.addEventListener('click', handleDoorClick);
+                    door2.addEventListener('click', handleDoorClick);
+                    trialStartTime = new Date().getTime();
+                }, 1500); 
+            }
+
             if (remainingTrials === randomArray.length - 1) {
                 arrow.src = tempArray[0] === 0 ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
                 cue = arrow.src.includes('leftarrow') ? 1 : 2;
-                arrow.classList.add('mh-btn');
+               
             }
-            door1.addEventListener('click', handleDoorClick);
-            door2.addEventListener('click', handleDoorClick);
-            trialStartTime = new Date().getTime();
+            
+            remainingTrials++;
         } else if (blockTrails < tempArray.length) {
+            const reactionTime = new Date().getTime() - trialStartTime;
             if (blockTrails === 0) {
                 console.log(tempArray);
             }
             const doorNumber = event.target.getAttribute('data-door-number');
-            // console.log('Door ' + doorNumber + ' clicked!');
-            event.target.src = './assets/images/opendoor.png';
+            console.log('Door ' + doorNumber + ' clicked!');
+            event.target.src = './assets/images/GFN.gif';
             doorSound.play();
-            const randomImageSrc = tempArray[blockTrails] === 0 ? './assets/images/laughing.gif' : './assets/images/gift.gif';
-            const oppRandomImageSrc = tempArray[blockTrails] === 1 ? './assets/images/laughing.gif' : './assets/images/gift.gif';
-            door1Block.src = randomImageSrc;
-            door2Block.src = oppRandomImageSrc;
-            const reactionTime = new Date().getTime() - trialStartTime;
+       
+            
           
-            // console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
+            console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
             experimentRecords.push({ RandomNumber: doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000, Cue: cue });
-            setTimeout(() => {
-                event.target.src = './assets/images/closedoor.png';
-                door1.addEventListener('click', handleDoorClick);
-                door2.addEventListener('click', handleDoorClick);
-                trialStartTime = new Date().getTime();
-            }, 800);
+            
+            if(doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1==1){
+                setTimeout(() => {
+                    let randomGift = gifts[Math.floor(Math.random() * gifts.length)];           
+                   event.target.src = './assets/images/' + randomGift + '.gif';
+                   yay.play();
+                    // This line will execute after the timeout
+                    setTimeout(() => {
+                        event.target.src = './assets/images/GF.jpg';
+                    }, 800);
+                    door1.addEventListener('click', handleDoorClick);
+                    door2.addEventListener('click', handleDoorClick);
+                    trialStartTime = new Date().getTime();
+                }, 1200); }
+                else{
+                    setTimeout(() => {
+                        event.target.src = './assets/images/GF.jpg';
+                        door1.addEventListener('click', handleDoorClick);
+                        door2.addEventListener('click', handleDoorClick);
+                        trialStartTime = new Date().getTime();
+                    }, 1500); }
+            
+            
+     
             blockTrails++;
             // Adjust the probability based on blockTrails
             if (blockTrails < 6) {
@@ -123,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Set cue value after determining the arrow direction
             cue = arrow.src.includes('leftarrow') ? 1 : 2;
-            arrow.classList.add('mh-btn');
+           
         } else {
             alert('Experiment completed!');
             setTimeout(() => {
