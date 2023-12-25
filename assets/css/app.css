@@ -9,7 +9,7 @@ html, body {
 }
 
 #app {
-    background: url(../images/background.png);
+    background: url(../images/kids.png);
     background-size: cover; /* This will make the background image cover the entire container */
     height: 100vh;
 }
@@ -80,31 +80,40 @@ main {
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) and (min-width: 400px) {
+@media (max-width: 1024px) and (min-width: 400px) {
 
-    h1 {
-        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    #app {
+        background: url(../images/kids1.png);
+        background-size: cover; /* This will make the background image cover the entire container */
+        height: 100vh;
     }
     #app {
         background-size: 100% 100%; /* Adjusted background size for smaller screens */
     }
 
-    #door2, #door1 {
+    #door1 {
         position: absolute;
-        width: 15rem; /* Set the width of the doors */
+        width: 18rem; /* Set the width of the doors */
         z-index: 1; /* Ensure doors are behind the button */
         margin: 6rem;
+        margin-left: 6rem;
+    }
+    #door2 {
+        position: absolute;
+        width: 18rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin-right: 1rem;
     }
 
     #play {
         position: absolute; /* Set the button to absolute position */
-        top: 30rem; /* Adjust the top distance as needed */
+        top: 50rem; /* Adjust the top distance as needed */
         z-index: 2; /* Ensure button is above the doors */
     }
     #arrow {
-        margin-left:5rem;
-        margin-right:5rem;
-        width: 10rem;
+        margin-left:4rem;
+        margin-right:1.5rem;
+        width: 15rem;
     }
 
     .mh-btn {
@@ -126,6 +135,8 @@ main {
     }
     #app {
         background-size: 100% 100%; /* Adjusted background size for smaller screens */
+        background: url(../images/kids1.png);
+        background-size: cover; /* This will make the background image cover the entire container */
     }
 
     #door2, #door1 {
@@ -165,6 +176,9 @@ main {
     }
     #app {
         background-size: 100% 100%; /* Adjusted background size for smaller screens */
+        background: url(../images/kids1.png);
+        background-size: cover; /* This will make the background image cover the entire container */
+        
     }
 
     #door2, #door1 {

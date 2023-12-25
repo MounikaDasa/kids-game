@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 else{
                     setTimeout(() => {          
                        event.target.src = './assets/images/S.png';
+
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.jpg';
