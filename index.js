@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const reactionTime = new Date().getTime() - trialStartTime;
             const doorNumber = event.target.getAttribute('data-door-number');
-            //console.log('Door ' + doorNumber + ' clicked!');
+            console.log('Door ' + doorNumber + ' clicked!');
             event.target.src = './assets/images/GFN.gif';
             doorSound.play();
            
            
-            //console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
+            console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
             experimentRecords.push({ RandomNumber: randomArray[remainingTrials], DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
            
             if(randomArray[remainingTrials]===1){
@@ -77,27 +77,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 // This line will execute after the timeout
                 setTimeout(() => {
                     event.target.src = './assets/images/GF.jpg';
+                    door1.addEventListener('click', handleDoorClick);
+                    door2.addEventListener('click', handleDoorClick);
+                    trialStartTime = new Date().getTime();
                 }, 800);
-                door1.addEventListener('click', handleDoorClick);
-                door2.addEventListener('click', handleDoorClick);
-                trialStartTime = new Date().getTime();
             }, 1200); }
             else{
-                setTimeout(() => {          
-                    event.target.src = './assets/images/S.png';
-                     // This line will execute after the timeout
-                     setTimeout(() => {
-                         event.target.src = './assets/images/GF.jpg';
-                     }, 800);
-                     door1.addEventListener('click', handleDoorClick);
-                     door2.addEventListener('click', handleDoorClick);
-                     trialStartTime = new Date().getTime();
-                 }, 1200);
+                setTimeout(() => {
+                    event.target.src = './assets/images/GF.jpg';
+                    door1.addEventListener('click', handleDoorClick);
+                    door2.addEventListener('click', handleDoorClick);
+                    trialStartTime = new Date().getTime();
+                }, 1500); 
             }
 
             if (remainingTrials === randomArray.length - 1) {
-                arrow.src = tempArray[0] === 0 ? './assets/images/smileR.png' : './assets/images/smileL.png';
-                cue = arrow.src.includes('smileL') ? 1 : 2;
+                arrow.src = tempArray[0] === 0 ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
+                cue = arrow.src.includes('leftarrow') ? 1 : 2;
                
             }
             
@@ -108,13 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(tempArray);
             }
             const doorNumber = event.target.getAttribute('data-door-number');
-            //console.log('Door ' + doorNumber + ' clicked!');
+            console.log('Door ' + doorNumber + ' clicked!');
             event.target.src = './assets/images/GFN.gif';
             doorSound.play();
        
             
           
-            //console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
+            console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
             experimentRecords.push({ RandomNumber: doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000, Cue: cue });
             
             if(doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1==1){
@@ -131,17 +127,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     trialStartTime = new Date().getTime();
                 }, 1200); }
                 else{
-                    setTimeout(() => {          
-                       event.target.src = './assets/images/S.png';
-
-                        // This line will execute after the timeout
-                        setTimeout(() => {
-                            event.target.src = './assets/images/GF.jpg';
-                        }, 800);
+                    setTimeout(() => {
+                        event.target.src = './assets/images/GF.jpg';
                         door1.addEventListener('click', handleDoorClick);
                         door2.addEventListener('click', handleDoorClick);
                         trialStartTime = new Date().getTime();
-                    }, 1200);}
+                    }, 1500); }
             
             
      
@@ -149,23 +140,23 @@ document.addEventListener('DOMContentLoaded', function () {
             // Adjust the probability based on blockTrails
             if (blockTrails < 6) {
                 const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.8 : 0.2;
-                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
             } else if (blockTrails < 11) {
                 const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.2 : 0.8;
-                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
             } else if (blockTrails < 16) {
                 const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.8 : 0.2;
-                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
             } else if (blockTrails < 21) {
                 const probabilityThreshold = tempArray[blockTrails + 1] === 0 ? 0.2 : 0.8;
-                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
             } else if (blockTrails < 46) {
                 const probabilityThreshold = tempArray[blockTrails + 1] === 0 ? 0.15 : 0.85;
-                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/rightarrow.png' : './assets/images/leftarrow.png';
             }
 
             // Set cue value after determining the arrow direction
-            cue = arrow.src.includes('smileL') ? 1 : 2;
+            cue = arrow.src.includes('leftarrow') ? 1 : 2;
            
         } else {
             alert('Experiment completed!');
