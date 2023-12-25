@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const reactionTime = new Date().getTime() - trialStartTime;
             const doorNumber = event.target.getAttribute('data-door-number');
-            console.log('Door ' + doorNumber + ' clicked!');
+            //console.log('Door ' + doorNumber + ' clicked!');
             event.target.src = './assets/images/GFN.gif';
             doorSound.play();
            
            
-            console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
+            //console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
             experimentRecords.push({ RandomNumber: randomArray[remainingTrials], DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
            
             if(randomArray[remainingTrials]===1){
@@ -100,17 +100,15 @@ document.addEventListener('DOMContentLoaded', function () {
             remainingTrials++;
         } else if (blockTrails < tempArray.length) {
             const reactionTime = new Date().getTime() - trialStartTime;
-            if (blockTrails === 0) {
-                console.log(tempArray);
-            }
+           
             const doorNumber = event.target.getAttribute('data-door-number');
-            console.log('Door ' + doorNumber + ' clicked!');
+            //console.log('Door ' + doorNumber + ' clicked!');
             event.target.src = './assets/images/GFN.gif';
             doorSound.play();
        
             
           
-            console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
+            //console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
             experimentRecords.push({ RandomNumber: doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000, Cue: cue });
             
             if(doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1==1){
