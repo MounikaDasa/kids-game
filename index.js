@@ -24,28 +24,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let randomArray = [];
 
-    // First 30 trials with 75% probability
-    randomArray = randomArray.concat(Array.from({ length: 15 }, () => (Math.random() < 0.75 ? 1 : 0)));
+    // First 30 trials with 50% probability
+    randomArray = randomArray.concat(Array.from({ length: 30 }, () => (Math.random() < 0.50 ? 1 : 0)));
 
     let tempArray = [];
+    // First 30 trials with 50% probability
+    tempArray = tempArray.concat(Array.from({ length: 30 }, () => (Math.random() < 0.50 ? 1 : 0)));
 
     // Next 10 trials with 80% probability
-    tempArray = tempArray.concat(Array.from({ length: 5 }, () => (Math.random() < 0.8 ? 1 : 0)));
+    tempArray = tempArray.concat(Array.from({ length: 10 }, () => (Math.random() < 0.8 ? 1 : 0)));
 
     // Next 10 trials with 20% probability
-    tempArray = tempArray.concat(Array.from({ length: 5 }, () => (Math.random() < 0.2 ? 1 : 0)));
+    tempArray = tempArray.concat(Array.from({ length: 10 }, () => (Math.random() < 0.2 ? 1 : 0)));
 
     // Next 10 trials with 80% probability
-    tempArray = tempArray.concat(Array.from({ length: 5 }, () => (Math.random() < 0.8 ? 1 : 0)));
+    tempArray = tempArray.concat(Array.from({ length: 10 }, () => (Math.random() < 0.8 ? 1 : 0)));
 
     // Next 10 trials with 20% probability
-    tempArray = tempArray.concat(Array.from({ length: 5 }, () => (Math.random() < 0.2 ? 1 : 0)));
+    tempArray = tempArray.concat(Array.from({ length: 10 }, () => (Math.random() < 0.2 ? 1 : 0)));
 
     // Last 50 trials with 15% probability
-    tempArray = tempArray.concat(Array.from({ length: 25 }, () => (Math.random() < 0.15 ? 1 : 0)));
+    tempArray = tempArray.concat(Array.from({ length: 50 }, () => (Math.random() < 0.15 ? 1 : 0)));
 
     playButton.addEventListener('click', startGame);
-
+    console.log(tempArray)
     function startGame() {
         // console.log('Game is starting...');
         trialStartTime = new Date().getTime();
@@ -66,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
            
            
             //console.log('RandomNumber:' + randomArray[remainingTrials] + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000);
-            experimentRecords.push({ RandomNumber: randomArray[remainingTrials], DoorNumber: doorNumber, ReactionTime: reactionTime / 1000 });
+            experimentRecords.push({ GiftInFirstBox:randomArray[remainingTrials],GiftInSecondBox:randomArray[remainingTrials]===1?0:1, OpenedBoxNumber: doorNumber, Reward: randomArray[remainingTrials],ReactionTime: reactionTime / 1000 });
            
             if(randomArray[remainingTrials]===1){
                 
@@ -88,11 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
                      // This line will execute after the timeout
                      setTimeout(() => {
                          event.target.src = './assets/images/GF.jpg';
-                     }, 800);
+                     }, 600);
                      door1.addEventListener('click', handleDoorClick);
                      door2.addEventListener('click', handleDoorClick);
                      trialStartTime = new Date().getTime();
-                 }, 1200);
+                 }, 1000);
             }
 
             if (remainingTrials === randomArray.length - 1) {
@@ -109,13 +111,15 @@ document.addEventListener('DOMContentLoaded', function () {
             //console.log('Door ' + doorNumber + ' clicked!');
             event.target.src = './assets/images/GFN.gif';
             doorSound.play();
+            const left=cue===1?1:0
+            const right=cue===2?1:0
        
             
           
             //console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
-            experimentRecords.push({ RandomNumber: doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1, DoorNumber: doorNumber, ReactionTime: reactionTime / 1000, Cue: cue });
+            experimentRecords.push({GiftInFirstBox:tempArray[blockTrails],GiftInSecondBox:tempArray[blockTrails]===1?0:1,  OpenedBoxNumber: doorNumber,Reward: doorNumber === 1 ? tempArray[blockTrails] : tempArray[blockTrails]===1?0:1, ReactionTime: reactionTime / 1000, Left: left, Right:right,cue:cue });
             
-            if(doorNumber == 1 ? tempArray[blockTrails] : tempArray[blockTrails]==1?0:1==1){
+            if(doorNumber === 1 ? tempArray[blockTrails] : tempArray[blockTrails]===1?0:1===1){
                 setTimeout(() => {
                     let randomGift = gifts[Math.floor(Math.random() * gifts.length)];           
                    event.target.src = './assets/images/' + randomGift + '.gif';
@@ -135,29 +139,33 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.jpg';
-                        }, 800);
+                        }, 600);
                         door1.addEventListener('click', handleDoorClick);
                         door2.addEventListener('click', handleDoorClick);
                         trialStartTime = new Date().getTime();
-                    }, 1200);}
+                    }, 1000);}
             
             
      
             blockTrails++;
             // Adjust the probability based on blockTrails
-            if (blockTrails < 6) {
-                const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.8 : 0.2;
+            if (blockTrails < 31) {
+                const probabilityThreshold = tempArray[blockTrails+1] === 0 ? 0.5 : 0.5;
                 arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
-            } else if (blockTrails < 11) {
-                const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.2 : 0.8;
+            } else if (blockTrails < 41) {
+                const probabilityThreshold = tempArray[blockTrails+1] === 0 ? 0.8 : 0.2;
                 arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
-            } else if (blockTrails < 16) {
-                const probabilityThreshold = tempArray[blockTrails] === 0 ? 0.8 : 0.2;
+            } else if (blockTrails < 51) {
+                const probabilityThreshold = tempArray[blockTrails+1] === 0 ? 0.2 : 0.8;
                 arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
-            } else if (blockTrails < 21) {
+            } else if (blockTrails < 61) {
+                const probabilityThreshold = tempArray[blockTrails+1] === 0 ? 0.8 : 0.2;
+                arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
+            } else if (blockTrails < 71) {
                 const probabilityThreshold = tempArray[blockTrails + 1] === 0 ? 0.2 : 0.8;
                 arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
-            } else if (blockTrails < 46) {
+            }
+            else if (blockTrails < 121) {
                 const probabilityThreshold = tempArray[blockTrails + 1] === 0 ? 0.15 : 0.85;
                 arrow.src = Math.random() < probabilityThreshold ? './assets/images/smileR.png' : './assets/images/smileL.png';
             }
