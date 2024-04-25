@@ -29,9 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let randomArray = [];
     
+    let tempArray = [];
+    let cueArray = [];
+    let boxArr = [];
+    let cueArr = [];
+    
     // Function to generate an array with specified number of ones and zeroes
     function generateArrays(m, n, k, l) {
         // Function to generate an array with specified number of ones and zeroes
+      
+
         function generateArray(n, m) {
             const array = Array(n).fill(1).concat(Array(m).fill(0));
             // Shuffle the array randomly
@@ -39,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
+            
+            
+            
             return array;
         }
     
@@ -54,28 +64,25 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return temp;
         }
-    
+        const te = m + n;
+        const n1 = Math.floor(te / 2);
+        const n0 = te-n1;
+           
         // Generate box array and temp array
-        const boxArr1 = generateArray(m, n);
-        const boxArr2  = [];
-        if((m+n)%2===0){
-        const boxArr2 = generateArray((m+n)/2,(m+n)-((m+n)/2));
-        }
-        else{
-        const boxArr2 = generateArray((m+n+1)/2,(m+n)-((m+n+1)/2));   
-        }
-        const resultArray = [];
+        console.log(n1,n0)
+        
+        
+        const boxArray1 = generateArray(n1,n0);
+        tempArray=[...tempArray,...boxArray1]
+        
+       
+        let tempArr = generateArray(k, l);
+        let cueArr = calculateCue(boxArray1, tempArr);
+        //console.log(boxArray1, cueArr)
+        cueArray=[...cueArray,...cueArr]
 
-        // Perform the AND operation for each element
-        for (let i = 0; i < boxArr1.length; i++) {
-            const andResult = boxArr1[i] & boxArr2[i]; // Using bitwise AND operator
-            resultArray.push(andResult);
-        }
+        //return { boxArray1, cueArr };
 
-        const tempArr = generateArray(k, l);
-        const cueArr = calculateCue(resultArray, tempArr);
-    
-        return { resultArray, cueArr };
     }
     
     // Usage example
@@ -84,58 +91,44 @@ document.addEventListener('DOMContentLoaded', function () {
     // First 30 trials with 50% probability
     // randomArray = randomArray.concat(Array.from({ length: 30 }, () => (Math.random() < 0.50 ? 1 : 0)));
 
-    let tempArray = [];
-    let cueArray = [];
-    let boxArr = [];
-    let cueArr = [];
 
     // First 60 trials with 80% box probability
     
         //30 trails with 75% Cue probability
-        const { boxArr: boxArr1, cueArr: cueArr1 } = generateArrays(24,6,23,7);
-        tempArray = tempArray.concat(boxArr1);
-        cueArray = cueArray.concat(cueArr1);
+        generateArrays(24,6,23,7);
+        console.log(tempArray,cueArray);
 
         //15 trails with 80% Cue probability
-        const { boxArr: boxArr2, cueArr: cueArr2 } = generateArrays(12, 3, 12, 3);
-        tempArray = tempArray.concat(boxArr2);
-        cueArray = cueArray.concat(cueArr2);
+        generateArrays(12, 3, 12, 3);
+        console.log(tempArray,cueArray);
+    
 
         //15 trials with 20% Cue probability
-        const { boxArr: boxArr3, cueArr: cueArr3 } = generateArrays(12, 3, 3, 12);
-        tempArray = tempArray.concat(boxArr3);
-        cueArray = cueArray.concat(cueArr3);
-
+        generateArrays(12, 3, 3, 12);
+        
     // 20 trials with 20% box probability
 
         //  15 trials with 80% Cue probability
-        const { boxArr: boxArr4, cueArr: cueArr4 } = generateArrays(3, 12, 12, 3);
-        tempArray = tempArray.concat(boxArr4);
-        cueArray = cueArray.concat(cueArr4);
-
+        generateArrays(3, 12, 12, 3);
+       
         // 5 trials with 20% Cue probability
 
-        const { boxArr: boxArr5s, cueArr: cueArr5s } = generateArrays(1, 4, 1, 4);
-        tempArray = tempArray.concat(boxArr5s);
-        cueArray = cueArray.concat(cueArr5s);
+        generateArrays(1, 4, 1, 4);
+        
 
     // 20 trials with 80% box probability
         // 10 trials with 20% Cue probability
-        const { boxArr: boxArr5, cueArr: cueArr5 } = generateArrays(8, 2, 2, 8);
-        tempArray = tempArray.concat(boxArr5);
-        cueArray = cueArray.concat(cueArr5);
+        generateArrays(8, 2, 2, 8);
+        
 
         // 10 trials with 15% Cue probability
-        const { boxArr: boxArr6s, cueArr: cueArr6s } = generateArrays(8, 2, 1, 9);
-        tempArray = tempArray.concat(boxArr6s);
-        cueArray = cueArray.concat(cueArr6s);
-
+        generateArrays(8, 2, 1, 9);
+        
     // 20 trials with 20% box probability
         // 20 trials 15% Cue probability
-        const { boxArr: boxArr6, cueArr: cueArr6 } = generateArrays(16, 4, 4, 16);
-        tempArray = tempArray.concat(boxArr6);
-        cueArray = cueArray.concat(cueArr6);
-
+       generateArrays(16, 4, 4, 16);
+       console.log(tempArray,cueArray);
+       
     if(exp_no==='1' || exp_no==='2'){
     
         if(exp_no==='1'){
@@ -146,9 +139,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
     }
-
+    
     playButton.addEventListener('click', startGame);
-    console.log(tempArray)
+ 
+    
     function startGame() {
         // console.log('Game is starting...');
         trialStartTime = new Date().getTime();
