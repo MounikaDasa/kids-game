@@ -180,7 +180,7 @@
     #app {
         background: url(../images/kids.png);
         background-size: cover; /* This will make the background image cover the entire container */
-        height: 100vh;
+        height: 70vh;
     }
 
     #door1 {
