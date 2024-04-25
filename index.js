@@ -128,17 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 20 trials 15% Cue probability
        generateArrays(16, 4, 4, 16);
        console.log(tempArray,cueArray);
-       
-    if(exp_no==='1' || exp_no==='2'){
     
-        if(exp_no==='1'){
-            arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png'; 
-        }
-        else{
-            arrow.src = cueArray[blockTrails]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
-
-        }
-    }
     
     playButton.addEventListener('click', startGame);
  
@@ -146,6 +136,18 @@ document.addEventListener('DOMContentLoaded', function () {
     function startGame() {
         // console.log('Game is starting...');
         trialStartTime = new Date().getTime();
+        playButton.style.visibility = "hidden";
+           
+        if(exp_no==='1' || exp_no==='2'){
+        
+            if(exp_no==='1'){
+                arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png'; 
+            }
+            else{
+                arrow.src = cueArray[blockTrails]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+
+            }
+    }
      
         door1.addEventListener('click', handleDoorClick);
         door2.addEventListener('click', handleDoorClick);
@@ -155,6 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleDoorClick(event) {
+
+
         
      
         if (blockTrails < tempArray.length) {
@@ -180,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         yay.play();
                         // This line will execute after the timeout
                         setTimeout(() => {
-                            event.target.src = './assets/images/GF.jpg';
+                            event.target.src = './assets/images/GF.png';
                         }, 800);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                         setTimeout(() => {
@@ -209,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // This line will execute after the timeout
                         setTimeout(() => {
-                            event.target.src = './assets/images/GF.jpg';
+                            event.target.src = './assets/images/GF.png';
                         }, 600);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
@@ -241,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         yay.play();
                         // This line will execute after the timeout
                         setTimeout(() => {
-                            event.target.src = './assets/images/GF.jpg';
+                            event.target.src = './assets/images/GF.png';
                         }, 800);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
@@ -270,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // This line will execute after the timeout
                         setTimeout(() => {
-                            event.target.src = './assets/images/GF.jpg';
+                            event.target.src = './assets/images/GF.png';
                         }, 800);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
