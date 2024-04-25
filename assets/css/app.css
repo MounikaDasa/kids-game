@@ -28,9 +28,6 @@ main {
     height: 100%;
 }
 
-
-
-
  #door1 {
     position: absolute;
     width: 20rem; /* Set the width of the doors */
@@ -99,7 +96,139 @@ main {
 }
 
 /* Responsive Styles */
-@media (max-width: 1023px) and (min-width: 500px) {
+@media only screen and (orientation: portrait) and (max-width: 470px) {
+  
+    h1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+    #app {
+        background: url(../images/kids_sv.png);
+        background-size: cover; /* This will make the background image cover the entire container */
+        background-position: center; /* Center the background image */
+        height: 100vh; /* Set the height of the container to fill the viewport height */
+    }
+
+    #door1 {
+        position: absolute;
+        width: 9rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin-left: 16rem;
+        margin-right: 1rem;
+        margin-top: 3rem;
+    }
+    #door2{
+        position: absolute;
+        width: 9rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin-left: 1rem;
+        margin-right: 10rem;
+        margin-top: 3rem;
+    }
+
+    #play {
+        position: absolute; /* Set the button to absolute position */
+        top: 29rem; /* Adjust the top distance as needed */
+        z-index: 2; /* Ensure button is above the doors */
+    }
+    #arrow {
+        position: absolute; /* Set the button to absolute position */
+        margin-top: 12;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        width: 6.5rem;
+        animation-name: arrowAnimation;
+        
+        
+        
+        
+    }
+
+        /* Keyframes for the arrow animation */
+@keyframes arrowAnimation {
+    0% {
+        margin-left: 11rem;
+        margin-right: 5rem;
+    }
+    50% {
+        margin-left:9rem;
+        margin-right: 7rem;
+    }
+    100% {
+        margin-left: 11rem;
+        margin-right: 5rem;
+    }
+}
+
+
+}
+
+/* Responsive Styles */
+@media only screen and (orientation: landscape) and (max-width: 750px) {
+  
+    h1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+    #app {
+        background: url(../images/kids_s.png);
+        background-size: 100% 100%; /* This will make the background image cover the entire container */
+        background-position: center; /* Center the background image */
+        height: 100vh; /* Set the height of the container to fill the viewport height */
+    }
+
+    #door1 {
+        position: absolute;
+        width: 13rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin-left: 12rem;
+        margin-right: 1rem;
+        margin-top: 2rem;
+    }
+    #door2{
+        position: absolute;
+        width: 13rem; /* Set the width of the doors */
+        z-index: 1; /* Ensure doors are behind the button */
+        margin-left: 6rem;
+        margin-right: 12rem;
+        margin-top: 2rem;
+    }
+
+    #play {
+        position: absolute; /* Set the button to absolute position */
+        top: 15rem; /* Adjust the top distance as needed */
+        left: 20rem;
+        z-index: 2; /* Ensure button is above the doors */
+    }
+    #arrow {
+        position: relative;
+        top:50%;
+        margin-left: 1.2rem;
+        margin-right: 5rem;
+        width: 12rem;
+        animation-name: arrowAnimation
+    }
+
+        /* Keyframes for the arrow animation */
+@keyframes arrowAnimation {
+    0% {
+        margin-left: 13rem;
+        margin-right: 7rem;
+    }
+    50% {
+        margin-left:11rem;
+        margin-right: 9rem;
+    }
+    100% {
+        margin-left: 13rem;
+        margin-right: 7rem;
+    }
+}
+
+
+}
+
+
+/* Responsive Styles */
+@media only screen and (orientation: landscape) and (max-width: 1023px) and (min-width: 800px) {
 
     #app {
         background: url(../images/kids1.png);
@@ -166,146 +295,3 @@ main {
     }
 }
 
-/* Responsive Styles */
-@media (max-width: 500px) {
-  
-    h1 {
-        font-size: 1.5rem; /* Adjusted font size for smaller screens */
-    }
-    #app {
-        background-size: 100% 100%; /* Adjusted background size for smaller screens */
-        background: url(../images/kids_s.png);
-        background-size: cover; /* This will make the background image cover the entire container */
-    }
-
-   #door1 {
-        position: absolute;
-        width: 10rem; /* Set the width of the doors */
-        z-index: 1; /* Ensure doors are behind the button */
-        margin-left: 12.5rem;
-        margin-right: 0.1rem;
-    }
-    #door2 {
-        position: absolute;
-        width: 10rem; /* Set the width of the doors */
-        z-index: 1; /* Ensure doors are behind the button */
-        margin-left: 0.2rem;
-        margin-right: 10.5rem;
-    }
-
-    #play {
-        position: absolute; /* Set the button to absolute position */
-        
-        z-index: 2; /* Ensure button is above the doors */
-        /*margin-right: 4rem;*/
-        top: 14rem; /* Adjust the top distance as needed */
-    }
-    
-
-    .mh-btn {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        background-color: rgba(255, 179, 0, 0.842);
-        font-size: 8px;
-        font-weight: bold;
-        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        border: 4px solid black;
-    }
-    #arrow {
-        margin-left: 13rem;
-        margin-top: 2rem;
-        margin-right: 12rem;
-        width: 7rem;
-        animation-name: arrowAnimation;
-        
-        
-        
-    }
-
-        /* Keyframes for the arrow animation */
-@keyframes arrowAnimation {
-    0% {
-        margin-left: 10rem;
-        margin-right: 7rem;
-    }
-    50% {
-        margin-left: 8rem;
-        margin-right: 9rem;
-    }
-    100% {
-        margin-left: 10rem;
-        margin-right: 7rem;
-    }
-}
-    
-}
-
-/* Responsive Styles */
-@media (max-width: 300px) {
-  
-    h1 {
-        font-size: 1.5rem; /* Adjusted font size for smaller screens */
-    }
-    #app {
-        background: url(../images/kids_sv.png);
-        background-size: cover; /* This will make the background image cover the entire container */
-        background-position: center; /* Center the background image */
-        height: 100vh; /* Set the height of the container to fill the viewport height */
-    }
-
-    #door1 {
-        position: absolute;
-        width: 7rem; /* Set the width of the doors */
-        z-index: 1; /* Ensure doors are behind the button */
-        margin-left: 19rem;
-        margin-right: 1rem;
-    }
-    #door2{
-        position: absolute;
-        width: 7rem; /* Set the width of the doors */
-        z-index: 1; /* Ensure doors are behind the button */
-        margin-left: 1rem;
-        margin-right: 12rem;
-    }
-
-    #play {
-        position: absolute; /* Set the button to absolute position */
-        top: 21rem; /* Adjust the top distance as needed */
-        z-index: 2; /* Ensure button is above the doors */
-    }
-    #arrow {
-        margin-left: 1.2rem;
-        margin-right: 1.2rem;
-        width: 5rem;
-        animation-name: arrowAnimation;
-        
-        
-        
-    }
-
-        /* Keyframes for the arrow animation */
-@keyframes arrowAnimation {
-    0% {
-        margin-left: 13rem;
-        margin-right: 7rem;
-    }
-    50% {
-        margin-left: 11rem;
-        margin-right: 9rem;
-    }
-    100% {
-        margin-left: 13rem;
-        margin-right: 7rem;
-    }
-}
-
-    .mh-btn {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-        background-color: rgba(255, 179, 0, 0.842);
-        font-size: 8px;
-        font-weight: bold;
-        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        border: 4px solid black;
-    }
-}

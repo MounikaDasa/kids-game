@@ -56,11 +56,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     
         // Generate box array and temp array
-        const boxArr = generateArray(m, n);
+        const boxArr1 = generateArray(m, n);
+        const boxArr2  = [];
+        if((m+n)%2===0){
+        const boxArr2 = generateArray((m+n)/2,(m+n)-((m+n)/2));
+        }
+        else{
+        const boxArr2 = generateArray((m+n+1)/2,(m+n)-((m+n+1)/2));   
+        }
+        const resultArray = [];
+
+        // Perform the AND operation for each element
+        for (let i = 0; i < boxArr1.length; i++) {
+            const andResult = boxArr1[i] & boxArr2[i]; // Using bitwise AND operator
+            resultArray.push(andResult);
+        }
+
         const tempArr = generateArray(k, l);
-        const cueArr = calculateCue(boxArr, tempArr);
+        const cueArr = calculateCue(resultArray, tempArr);
     
-        return { boxArr, cueArr };
+        return { resultArray, cueArr };
     }
     
     // Usage example
@@ -74,37 +89,53 @@ document.addEventListener('DOMContentLoaded', function () {
     let boxArr = [];
     let cueArr = [];
 
+    // First 60 trials with 80% box probability
     
-    
-    // First 30 trials with 80% box probability and 75% Cue probability
-    const { boxArr: boxArr1, cueArr: cueArr1 } = generateArrays(24,6,23,7);
-    tempArray = tempArray.concat(boxArr1);
-    cueArray = cueArray.concat(cueArr1);
+        //30 trails with 75% Cue probability
+        const { boxArr: boxArr1, cueArr: cueArr1 } = generateArrays(24,6,23,7);
+        tempArray = tempArray.concat(boxArr1);
+        cueArray = cueArray.concat(cueArr1);
 
-    // First 15 trials with 80% box probability and 80% Cue probability
-    const { boxArr: boxArr2, cueArr: cueArr2 } = generateArrays(12, 3, 12, 3);
-    tempArray = tempArray.concat(boxArr2);
-    cueArray = cueArray.concat(cueArr2);
+        //15 trails with 80% Cue probability
+        const { boxArr: boxArr2, cueArr: cueArr2 } = generateArrays(12, 3, 12, 3);
+        tempArray = tempArray.concat(boxArr2);
+        cueArray = cueArray.concat(cueArr2);
 
-    // Next 15 trials with 20% box probability and 20% Cue probability
-    const { boxArr: boxArr3, cueArr: cueArr3 } = generateArrays(3, 12, 3, 12);
-    tempArray = tempArray.concat(boxArr3);
-    cueArray = cueArray.concat(cueArr3);
+        //15 trials with 20% Cue probability
+        const { boxArr: boxArr3, cueArr: cueArr3 } = generateArrays(12, 3, 3, 12);
+        tempArray = tempArray.concat(boxArr3);
+        cueArray = cueArray.concat(cueArr3);
 
-    // Next 15 trials with 80% box probability and 80% Cue probability
-    const { boxArr: boxArr4, cueArr: cueArr4 } = generateArrays(12, 3, 12, 3);
-    tempArray = tempArray.concat(boxArr4);
-    cueArray = cueArray.concat(cueArr4);
+    // 20 trials with 20% box probability
 
-    // Next 15 trials with 20% box probability and 20% Cue probability
-    const { boxArr: boxArr5, cueArr: cueArr5 } = generateArrays(3, 12, 3, 12);
-    tempArray = tempArray.concat(boxArr5);
-    cueArray = cueArray.concat(cueArr5);
+        //  15 trials with 80% Cue probability
+        const { boxArr: boxArr4, cueArr: cueArr4 } = generateArrays(3, 12, 12, 3);
+        tempArray = tempArray.concat(boxArr4);
+        cueArray = cueArray.concat(cueArr4);
 
-    // Next 30 trials with 80% box probability and 15% Cue probability
-    const { boxArr: boxArr6, cueArr: cueArr6 } = generateArrays(24, 6, 5, 25);
-    tempArray = tempArray.concat(boxArr6);
-    cueArray = cueArray.concat(cueArr6);
+        // 5 trials with 20% Cue probability
+
+        const { boxArr: boxArr5s, cueArr: cueArr5s } = generateArrays(1, 4, 1, 4);
+        tempArray = tempArray.concat(boxArr5s);
+        cueArray = cueArray.concat(cueArr5s);
+
+    // 20 trials with 80% box probability
+        // 10 trials with 20% Cue probability
+        const { boxArr: boxArr5, cueArr: cueArr5 } = generateArrays(8, 2, 2, 8);
+        tempArray = tempArray.concat(boxArr5);
+        cueArray = cueArray.concat(cueArr5);
+
+        // 10 trials with 15% Cue probability
+        const { boxArr: boxArr6s, cueArr: cueArr6s } = generateArrays(8, 2, 1, 9);
+        tempArray = tempArray.concat(boxArr6s);
+        cueArray = cueArray.concat(cueArr6s);
+
+    // 20 trials with 20% box probability
+        // 20 trials 15% Cue probability
+        const { boxArr: boxArr6, cueArr: cueArr6 } = generateArrays(16, 4, 4, 16);
+        tempArray = tempArray.concat(boxArr6);
+        cueArray = cueArray.concat(cueArr6);
+
     if(exp_no==='1' || exp_no==='2'){
     
         if(exp_no==='1'){
