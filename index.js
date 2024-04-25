@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             event.target.src = './assets/images/GFN.gif';
             arrow.src = '';
+            arrow.style.visibility = "hidden";
             door1.removeEventListener('click', handleDoorClick);
             door2.removeEventListener('click', handleDoorClick);
             
@@ -198,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             }, 400);
 
                         }
+                        arrow.style.visibility = "visible";
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
@@ -227,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }, 400);
     
                             }
+                            arrow.style.visibility = "visible";
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
@@ -259,6 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }, 400);
     
                             }
+                            arrow.style.visibility = "visible";
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
@@ -288,6 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }, 400);
     
                             }
+                        arrow.style.visibility = "visible";
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
