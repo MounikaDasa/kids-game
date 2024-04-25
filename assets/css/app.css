@@ -177,7 +177,7 @@ main {
 
     #door1 {
         position: absolute;
-        width: 13rem; /* Set the width of the doors */
+        width: 11rem; /* Set the width of the doors */
         z-index: 1; /* Ensure doors are behind the button */
         margin-left: 12rem;
         margin-right: 1rem;
@@ -185,7 +185,7 @@ main {
     }
     #door2{
         position: absolute;
-        width: 13rem; /* Set the width of the doors */
+        width: 11rem; /* Set the width of the doors */
         z-index: 1; /* Ensure doors are behind the button */
         margin-left: 6rem;
         margin-right: 12rem;
