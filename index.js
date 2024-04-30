@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const door1 = document.getElementById('door1');
     const door2 = document.getElementById('door2');
     const playButton = document.getElementById('play');
+    const stopButton = document.getElementById('stop');
+
     
     const yay = new Audio('./assets/yey.mp3');
     const arrow = document.getElementById('arrow');
@@ -96,11 +98,11 @@ document.addEventListener('DOMContentLoaded', function () {
     
         //30 trails with 75% Cue probability
         generateArrays(24,6,23,7);
-        console.log(tempArray,cueArray);
+        //console.log(tempArray,cueArray);
 
         //15 trails with 80% Cue probability
         generateArrays(12, 3, 12, 3);
-        console.log(tempArray,cueArray);
+        //console.log(tempArray,cueArray);
     
 
         //15 trials with 20% Cue probability
@@ -127,10 +129,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // 20 trials with 20% box probability
         // 20 trials 15% Cue probability
        generateArrays(16, 4, 4, 16);
-       console.log(tempArray,cueArray);
+       //console.log(tempArray,cueArray);
     
     
     playButton.addEventListener('click', startGame);
+    stopButton.addEventListener('click', stopGame);
+
+
+    function stopGame() {
+
+        tempArray=[]
+    }
  
     
     function startGame() {
@@ -165,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const reactionTime = new Date().getTime() - trialStartTime;
           
             const doorNumber = event.target.getAttribute('data-door-number');
-            console.log('Door ' + doorNumber + ' clicked!');
+            //console.log('Door ' + doorNumber + ' clicked!');
 
             event.target.src = './assets/images/GFN.gif';
             arrow.src = '';
@@ -175,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             let reward = 10;
             
-            if(doorNumber === "1"){
+            if(doorNumber === "2"){
                
                 if(tempArray[blockTrails] ===1){
                     reward=1
@@ -194,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                         {
+                            
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
                             }, 400);
@@ -304,8 +314,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
 
-            //console.log('RandomNumber:' + (doorNumber == 1 ? tempArray[blockTrails] : (tempArray[blockTrails]==1?0:1)) + 'DoorNumber:' + doorNumber + 'ReactionTime:' + reactionTime / 1000 + 'Cue:' + cue);
-            experimentRecords.push({ChoosedBox:doorNumber === "1"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Left":"Right",  Rewards: reward, ReactionTime: reactionTime / 1000 });
+            //console.log("ChoosedBox:",doorNumber === "1"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Right":"Left", " Rewards:", reward);
+            experimentRecords.push({ChoosedBox:doorNumber === "1"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Right":"Left",  Rewards: reward, ReactionTime: reactionTime / 1000 });
             
             blockTrails++;
    
