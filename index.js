@@ -314,8 +314,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
 
-            //console.log("ChoosedBox:",doorNumber === "1"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Right":"Left", " Rewards:", reward);
-            experimentRecords.push({ChoosedBox:doorNumber === "1"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Right":"Left",  Rewards: reward, ReactionTime: reactionTime / 1000 });
+            console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward);
+            experimentRecords.push({ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000 });
             
             blockTrails++;
    
