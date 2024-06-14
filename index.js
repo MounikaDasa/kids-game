@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let gifts=['A','A1','A3','A4','B','B1','B2','B3','B4','B5','B6','C','C1','C2','C3','C4','D','D2','D3','D4','E','E1','E2','E3','E4']
 
     let randomArray = [];
+    let boxProbability = 0;
+    let cueProbability = 0;
     
     let tempArray = [];
     let cueArray = [];
@@ -80,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
        
         let tempArr = generateArray(k, l);
         let cueArr = calculateCue(boxArray1, tempArr);
+        
         //console.log(boxArray1, cueArr)
         cueArray=[...cueArray,...cueArr]
 
@@ -139,6 +142,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function stopGame() {
 
         tempArray=[]
+        alert('Experiment completed!');
+            setTimeout(() => {
+                downloadExcel(userName+"_"+pid+"_"+exp_no);
+            }, 300);
     }
  
     
@@ -311,11 +318,39 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 1000);
                 }
             }
+            if (blockTrails <= 60) {
+                boxProbability = 0.8;
+                if (blockTrails <= 30) {
+                    cueProbability = 0.75;
+                } else if (blockTrails > 30 && blockTrails <= 45) {
+                    cueProbability = 0.8;
+                } else {
+                    cueProbability = 0.2;
+                }
+            } else if (blockTrails <= 80) {
+                boxProbability = 0.2;
+                if (blockTrails <= 75) {
+                    cueProbability = 0.8;
+                } else {
+                    cueProbability = 0.2;
+                }
+            } else if (blockTrails <= 100) {
+                boxProbability = 0.8;
+                if (blockTrails <= 90) {
+                    cueProbability = 0.2;
+                } else {
+                    cueProbability = 0.15;
+                }
+            } else if (blockTrails <= 120) {
+                boxProbability = 0.2;
+                cueProbability = 0.15;
+            }
+        
 
             
 
-            console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward);
-            experimentRecords.push({ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000 });
+            console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward, boxProbability, cueProbability );
+            experimentRecords.push({ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000, BoxProb: boxProbability, CueProb: cueProbability });
             
             blockTrails++;
    
