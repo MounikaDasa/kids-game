@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.png';
-                        }, 800);
+                        }, 4000);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                         setTimeout(() => {
                             arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
-                        }, 800);
+                        }, 4000);
                         
                         trialStartTime = new Date().getTime();
                     }, 1200); 
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.png';
-                        }, 600);
+                        }, 4000);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
-                        }, 800);
+                        }, 4000);
                         trialStartTime = new Date().getTime();
                     }, 1000);
                 }
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.png';
-                        }, 800);
+                        }, 4000);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
-                        }, 800);
+                        }, 4000);
                         
                         trialStartTime = new Date().getTime();
                     }, 1200); 
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.png';
-                        }, 800);
+                        }, 4000);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             door1.addEventListener('click', handleDoorClick);
                             door2.addEventListener('click', handleDoorClick);
-                        }, 800);
+                        }, 4000);
                         trialStartTime = new Date().getTime();
                     }, 1000);
                 }
