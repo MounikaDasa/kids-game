@@ -237,13 +237,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
-                            }, 2500);
+                            }, 1000);
                             }
                             else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                             {
                                 setTimeout(() => {
                                     arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
-                                }, 2500);
+                                }, 1000);
     
                             }
                             arrow.style.visibility = "visible";
@@ -300,13 +300,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
                                 arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
-                            }, 2500);
+                            }, 1000);
                             }
                             else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                             {
                                 setTimeout(() => {
                                     arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
-                                }, 2500);
+                                }, 1000);
     
                             }
                         arrow.style.visibility = "visible";
