@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const [userName, pid, exp_no] = userInput.split(",").map(item => item.trim());
 
     // Now userName, pid, and ex_no hold the respective values entered by the user
-    console.log(userName, pid, exp_no)
+    //console.log(userName, pid, exp_no)
 
 
     if (!userName) {
@@ -45,46 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function generateArray(n, m) {
             const array = Array(n).fill(1).concat(Array(m).fill(0));
-            // Shuffle the array randomly
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
+            const arrayC = array.sort(() => Math.random() - 0.5); 
+            //console.log(arrayC);   
+
+            return arrayC;
             
-            
-            
-            return array;
         }
     
-        // Function to calculate cue based on two arrays
-        function calculateCue(arr1, arr2) {
-            const temp = [];
-            for (let i = 0; i < arr2.length; i++) {
-                if (arr2[i] === 1) {
-                    temp.push(arr1[i]);
-                } else {
-                    temp.push(arr1[i] === 0 ? 1 : 0);
-                }
-            }
-            return temp;
-        }
-        const te = m + n;
-        const n1 = Math.floor(te / 2);
-        const n0 = te-n1;
-           
-        // Generate box array and temp array
-        console.log(n1,n0)
-        
-        
-        const boxArray1 = generateArray(n1,n0);
-        tempArray=[...tempArray,...boxArray1]
         
        
         let tempArr = generateArray(k, l);
-        let cueArr = calculateCue(boxArray1, tempArr);
-        
-        //console.log(boxArray1, cueArr)
-        cueArray=[...cueArray,...cueArr]
+       
+        tempArray=[...tempArray,...tempArr]
 
         //return { boxArray1, cueArr };
 
@@ -97,42 +69,35 @@ document.addEventListener('DOMContentLoaded', function () {
     // randomArray = randomArray.concat(Array.from({ length: 30 }, () => (Math.random() < 0.50 ? 1 : 0)));
 
 
-    // First 60 trials with 80% box probability
+    // First 10 trials with 80% box probability
     
         //30 trails with 75% Cue probability
-        generateArrays(24,6,23,7);
+        generateArrays(8,2,7,3);
         //console.log(tempArray,cueArray);
 
-        //15 trails with 80% Cue probability
-        generateArrays(12, 3, 12, 3);
-        //console.log(tempArray,cueArray);
-    
-
-        //15 trials with 20% Cue probability
-        generateArrays(12, 3, 3, 12);
         
-    // 20 trials with 20% box probability
+    // 10 trials with 20% box probability
 
-        //  15 trials with 80% Cue probability
-        generateArrays(3, 12, 12, 3);
+        //  5 trials with 80% Cue probability
+        generateArrays(1,4,4,1);
        
         // 5 trials with 20% Cue probability
 
         generateArrays(1, 4, 1, 4);
         
 
-    // 20 trials with 80% box probability
-        // 10 trials with 20% Cue probability
-        generateArrays(8, 2, 2, 8);
+    // 10 trials with 80% box probability
+        // 5 trials with 80% Cue probability
+        generateArrays(4,1,4,1);
         
 
-        // 10 trials with 15% Cue probability
-        generateArrays(8, 2, 1, 9);
+        // 5 trials with 20% Cue probability
+        generateArrays(4,1,1,4);
         
-    // 20 trials with 20% box probability
-        // 20 trials 15% Cue probability
-       generateArrays(16, 4, 4, 16);
-       //console.log(tempArray,cueArray);
+    // 10 trials with 20% box probability
+        // 10 trials 15% Cue probability
+       generateArrays(2,8,1,9);
+       //console.log(tempArray);
     
     
     playButton.addEventListener('click', startGame);
@@ -157,15 +122,18 @@ document.addEventListener('DOMContentLoaded', function () {
         if(exp_no==='1' || exp_no==='2'){
         
             if(exp_no==='1'){
-                arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png'; 
+                arrow.src = tempArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png'; 
             }
             else{
-                arrow.src = cueArray[blockTrails]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+                arrow.src = tempArray[blockTrails]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
 
             }
+            
     }
      
-        door1.addEventListener('click', handleDoorClick);
+        door1.addEventListener('click',
+            
+            handleDoorClick);
         door2.addEventListener('click', handleDoorClick);
         // Reset cue at the beginning of each trial
         
@@ -173,9 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleDoorClick(event) {
-
-
-        
+      
      
         if (blockTrails < tempArray.length) {
             const reactionTime = new Date().getTime() - trialStartTime;
@@ -205,14 +171,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2500);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                         setTimeout(() => {
-                            arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
+                            arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
                         }, 2500);
                         }
                         else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                         {
                             
                             setTimeout(() => {
-                                arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+                                arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
                             }, 2500);
 
                         }
@@ -236,13 +202,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 600);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
-                                arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
+                                arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
                             }, 1000);
                             }
                             else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                             {
                                 setTimeout(() => {
-                                    arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+                                    arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
                                 }, 1000);
     
                             }
@@ -257,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             else{
-                if(tempArray[blockTrails] ===0){
+                if(tempArray[blockTrails] ===1){
                     reward=1
                     setTimeout(() => {
                         let randomGift = gifts[Math.floor(Math.random() * gifts.length)];           
@@ -269,13 +235,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2500);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
-                                arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
+                                arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
                             }, 2500);
                             }
                             else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                             {
                                 setTimeout(() => {
-                                    arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+                                    arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
                                 }, 2500);
     
                             }
@@ -296,16 +262,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         // This line will execute after the timeout
                         setTimeout(() => {
                             event.target.src = './assets/images/GF.png';
-                        }, 2500);
+                        }, 600);
                         if((exp_no==="0" && blockTrails>10 && blockTrails<20) || exp_no=="1"){
                             setTimeout(() => {
-                                arrow.src = cueArray[blockTrails]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
+                                arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/leftarrow.png' : './assets/images/rightarrow.png';  
                             }, 1000);
                             }
                             else if((exp_no==="0" && blockTrails>20) || exp_no=="2")
                             {
                                 setTimeout(() => {
-                                    arrow.src = cueArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
+                                    arrow.src = tempArray[blockTrails+1]===1 ? './assets/images/smileL.png' : './assets/images/smileR.png'; 
                                 }, 1000);
     
                             }
@@ -318,39 +284,38 @@ document.addEventListener('DOMContentLoaded', function () {
                     }, 1000);
                 }
             }
-            if (blockTrails <= 59) {
+
+            
+            if (blockTrails <= 9) {
                 boxProbability = 0.8;
-                if (blockTrails <= 29) {
-                    cueProbability = 0.75;
-                } else if (blockTrails > 29 && blockTrails <= 44) {
-                    cueProbability = 0.8;
-                } else {
-                    cueProbability = 0.2;
-                }
-            } else if (blockTrails <= 79) {
+                cueProbability = 0.75;
+                
+            } else if (blockTrails <= 19) {
                 boxProbability = 0.2;
-                if (blockTrails <= 74) {
+                if (blockTrails <= 14) {
+                    cueProbability = 0.8;
+                }
+                 else {
+                    cueProbability = 0.2;
+                }
+            } else if (blockTrails <= 29) {
+                boxProbability = 0.8;
+                if (blockTrails <= 24) {
                     cueProbability = 0.8;
                 } else {
                     cueProbability = 0.2;
                 }
-            } else if (blockTrails <= 99) {
-                boxProbability = 0.8;
-                if (blockTrails <= 89) {
-                    cueProbability = 0.2;
-                } else {
-                    cueProbability = 0.15;
-                }
-            } else if (blockTrails <= 119) {
+            } else if (blockTrails <= 39) {
                 boxProbability = 0.2;
                 cueProbability = 0.15;
             }
-        
+
+
 
             
 
-            console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",cueArray[blockTrails],cueArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward, boxProbability, cueProbability );
-            experimentRecords.push({TrailNo:blockTrails+1,ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:cueArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000, BoxProb: boxProbability, CueProb: cueProbability });
+            //console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",tempArray[blockTrails],tempArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward, boxProbability, cueProbability );
+            experimentRecords.push({TrailNo:blockTrails+1,ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:tempArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000, BoxProb: boxProbability, CueProb: cueProbability });
             
             blockTrails++;
    
