@@ -62,42 +62,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
     
-    // Usage example
+       // Usage example
     
 
     // First 30 trials with 50% probability
     // randomArray = randomArray.concat(Array.from({ length: 30 }, () => (Math.random() < 0.50 ? 1 : 0)));
 
 
-    // First 10 trials with 80% box probability
+    // First 60 trials with 80% box probability
     
         //30 trails with 75% Cue probability
-        generateArrays(8,2,7,3);
+        generateArrays(24,6,23,7);
         //console.log(tempArray,cueArray);
 
-        
-    // 10 trials with 20% box probability
+        //15 trails with 80% Cue probability
+        generateArrays(12, 3, 12, 3);
+        //console.log(tempArray,cueArray);
+    
 
-        //  5 trials with 80% Cue probability
-        generateArrays(1,4,4,1);
+        //15 trials with 20% Cue probability
+        generateArrays(12, 3, 3, 12);
+        
+    // 20 trials with 20% box probability
+
+        //  15 trials with 80% Cue probability
+        generateArrays(3, 12, 12, 3);
        
         // 5 trials with 20% Cue probability
 
         generateArrays(1, 4, 1, 4);
         
 
-    // 10 trials with 80% box probability
-        // 5 trials with 80% Cue probability
-        generateArrays(4,1,4,1);
+    // 20 trials with 80% box probability
+        // 10 trials with 20% Cue probability
+        generateArrays(8, 2, 2, 8);
         
 
-        // 5 trials with 20% Cue probability
-        generateArrays(4,1,1,4);
+        // 10 trials with 15% Cue probability
+        generateArrays(8, 2, 1, 9);
         
-    // 10 trials with 20% box probability
-        // 10 trials 15% Cue probability
-       generateArrays(2,8,1,9);
-       //console.log(tempArray);
+    // 20 trials with 20% box probability
+        // 20 trials 15% Cue probability
+       generateArrays(16, 4, 4, 16);
+       //console.log(tempArray,cueArray);
+        
+
     
     
     playButton.addEventListener('click', startGame);
@@ -286,36 +295,42 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             
-            if (blockTrails <= 9) {
+            if (blockTrails <= 59) {
                 boxProbability = 0.8;
-                cueProbability = 0.75;
-                
-            } else if (blockTrails <= 19) {
-                boxProbability = 0.2;
-                if (blockTrails <= 14) {
-                    cueProbability = 0.8;
-                }
-                 else {
-                    cueProbability = 0.2;
-                }
-            } else if (blockTrails <= 29) {
-                boxProbability = 0.8;
-                if (blockTrails <= 24) {
+                if (blockTrails <= 29) {
+                    cueProbability = 0.75;
+                } else if (blockTrails > 29 && blockTrails <= 44) {
                     cueProbability = 0.8;
                 } else {
                     cueProbability = 0.2;
                 }
-            } else if (blockTrails <= 39) {
+            } else if (blockTrails <= 79) {
+                boxProbability = 0.2;
+                if (blockTrails <= 74) {
+                    cueProbability = 0.8;
+                } else {
+                    cueProbability = 0.2;
+                }
+            } else if (blockTrails <= 99) {
+                boxProbability = 0.8;
+                if (blockTrails <= 89) {
+                    cueProbability = 0.2;
+                } else {
+                    cueProbability = 0.15;
+                }
+            } else if (blockTrails <= 119) {
                 boxProbability = 0.2;
                 cueProbability = 0.15;
             }
+        
+
 
 
 
             
 
             //console.log("ChoosedBox:",doorNumber === "2"?"Left":"Right","CueShowed:",tempArray[blockTrails],tempArray[blockTrails]===1?"Left":"Right","RewardBox:",tempArray[blockTrails] ===1?"Left":"Right", " Rewards:", reward, boxProbability, cueProbability );
-            experimentRecords.push({TrailNo:blockTrails+1,ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:tempArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 1000, BoxProb: boxProbability, CueProb: cueProbability });
+            experimentRecords.push({TrailNo:blockTrails+1,ChoosedBox:doorNumber === "2"?"Left":"Right",CueShowed:tempArray[blockTrails]===1?"Left":"Right", RewardBox:tempArray[blockTrails] ===1?"Left":"Right",Rewards: reward, ReactionTime: reactionTime / 100, BoxProb: boxProbability, CueProb: cueProbability });
             
             blockTrails++;
    
